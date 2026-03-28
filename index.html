@@ -25,6 +25,7 @@
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li><a href="#music">Music</a></li>
                 </ul>
             </nav>
             <button id="theme-toggle" aria-label="Toggle dark mode">
@@ -46,37 +47,55 @@
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="section-skills">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-icon">🎨</div>
-                    <h3>Frontend</h3>
-                    <p>HTML5, CSS3, JavaScript, Responsive Design</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">⚙️</div>
-                    <h3>Development</h3>
-                    <p>Git, VS Code, Chrome DevTools, Debugging</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">📱</div>
-                    <h3>Design</h3>
-                    <p>Flexbox, Grid, Mobile-First, UI/UX Principles</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">🚀</div>
-                    <h3>Learning</h3>
-                    <p>React, Node.js, APIs, Database Design</p>
-                </div>
-            </div>
-        </section>
+       <div class="skills-grid">
+    <div class="skill-card">
+        <div class="skill-icon">🎨</div>
+        <h3>Frontend</h3>
+        <p>HTML5, CSS3, JavaScript, Responsive Design</p>
+        <div class="skill-extra">
+            <p>I build responsive, accessible UIs using modern CSS techniques like Flexbox and Grid.</p>
+        </div>
+        <button class="skill-toggle">Show more ▼</button>
+    </div>
+    <div class="skill-card">
+        <div class="skill-icon">⚙️</div>
+        <h3>Development</h3>
+        <p>Git, VS Code, Chrome DevTools, Debugging</p>
+        <div class="skill-extra">
+            <p>I use Git for version control and Chrome DevTools to debug and optimize performance.</p>
+        </div>
+        <button class="skill-toggle">Show more ▼</button>
+    </div>
+    <div class="skill-card">
+        <div class="skill-icon">📱</div>
+        <h3>Design</h3>
+        <p>Flexbox, Grid, Mobile-First, UI/UX Principles</p>
+        <div class="skill-extra">
+            <p>I follow a mobile-first approach and apply UI/UX principles for clean, user-friendly layouts.</p>
+        </div>
+        <button class="skill-toggle">Show more ▼</button>
+    </div>
+    <div class="skill-card">
+        <div class="skill-icon">🚀</div>
+        <h3>Learning</h3>
+        <p>React, Node.js, APIs, Database Design</p>
+        <div class="skill-extra">
+            <p>Currently learning React and backend development to become a full-stack developer.</p>
+        </div>
+        <button class="skill-toggle">Show more ▼</button>
+    </div>
+</div>
 
         <!-- Projects Section -->
         <section id="projects" class="section-projects">
             <h2 class="section-title">Featured Projects</h2>
+            <div class="project-filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="coe">COE</button>
+    <button class="filter-btn" data-filter="cs">CS</button>
+</div>
             <div class="projects-grid">
-                <div class="project-card">
+                <div class="project-card" data-category="coe">
                     <div class="project-image">
                         <img src="assets/images/logisimicon_94525.png" 
                              alt="16-Bit Processor Simulation Screenshot">
@@ -94,7 +113,7 @@
                     </div>
                 </div>
                 
-                <div class="project-card">
+                <div class="project-card" data-category="cs">
                     <div class="project-image">
                         <img src="assets/images/javafx_logo_color_1r.jpg" 
                              alt="Event Management System Screenshot">
@@ -112,6 +131,7 @@
                     </div>
                 </div>
             </div>
+            <p id="project-count" class="project-count"></p>
         </section>
 
         <!-- Contact Section -->
@@ -145,7 +165,16 @@
             </form>
             <div id="form-message" class="form-message"></div>
         </section>
-
+<!-- Music Section -->
+<section id="music" class="section-music">
+    <h2 class="section-title">Music Search</h2>
+    <div class="music-search-box">
+        <input type="text" id="music-input" placeholder="Search for an artist or song..." />
+        <button id="music-search-btn">🎵 Search</button>
+    </div>
+    <p id="music-error" class="music-error"></p>
+    <div id="music-results" class="music-results"></div>
+</section>
         <!-- Footer -->
         <footer class="footer">
             <p>&copy; 2026 Faisal Bayounis. Built with passion and code.</p>

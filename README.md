@@ -1,92 +1,58 @@
-# 202267880-FaisalBayounis-assigment1
-# Personal Portfolio Website
+# Faisal Bayounis – Web Developer Portfolio
 
-## 📌 Project Description
+## Project Description
 
-This project is a responsive personal portfolio website built using HTML, CSS, and JavaScript.
-
-The website includes the following sections:
-
-- **About Me** – A short introduction about my background and interests.
-- **Projects** – Showcases two major academic projects:
-  - **16-Bit Processor Simulation Using Logic Gates**
-  - **Event Management System (JavaFX)**
-- **Contact Section** – A functional contact form (front-end only).
-
-Additional interactive features include:
-
-- Dark / Light mode toggle
-- Greeting message based on time of day
-- Smooth scrolling navigation
-- Responsive layout for desktop, tablet, and mobile devices
+A personal portfolio website built with HTML, CSS, and vanilla JavaScript. The site showcases my skills, featured projects, and includes interactive features such as a music search, project filtering, dark mode, and a contact form.
 
 ---
 
-## 🛠 Technologies Used
+## Features
 
-- HTML5
-- CSS3 (Flexbox, CSS Grid, Media Queries)
-- JavaScript (DOM manipulation, event handling)
+- 🌙 Dark / Light mode toggle with localStorage
+- 🎵 iTunes Music Search with 30-second preview player
+- 🗂️ Project filter by category (All / COE / CS)
+- 📂 Expand / Collapse skill cards
+- 📬 Contact form with validation and confirmation message
+- ✨ Smooth animations and transitions throughout
 
 ---
 
-## ⚙️ Setup Instructions (How to Run Locally)
-
-To run this project locally:
+## How to Run Locally
 
 1. Clone the repository:
    ```bash
-   git clone <your-repository-link>
+   git clone https://github.com/CVQC/202267880-FaisalBayounis-assignment2.git
    ```
 
-2. Navigate into the project folder:
+2. Open the project folder:
    ```bash
-   cd 202267880-FaisalBayounis-assignment1
+   cd 202267880-FaisalBayounis-assignment2
    ```
 
-3. Open `index.html` in your browser.
-
-You can:
-- Drag and drop `index.html` into Chrome
-- Or use VS Code with Live Server
-
-No backend or installation is required.
+3. Open `index.html` in your browser — no server needed.
 
 ---
 
-## 🤖 AI Usage Summary
+## AI Tools Used
 
-AI tools were used during development:
+I used AI tools to assist in understanding concepts and implementing features:
 
-- **ChatGPT** was used to generate the initial project structure, base HTML/CSS, and JavaScript logic.
-- **Claude** was used to enhance the visual design, improve styling, and refine layout presentation.
+- **ChatGPT** — Used for understanding basic structure, concepts, and how JavaScript features like localStorage and fetch work.
+- **Claude** — Used for implementing features, reviewing code, and improving quality.
 
-All AI-generated suggestions were:
-- Reviewed manually
-- Modified and customized
-- Tested for correctness and responsiveness
-- Understood before final implementation
+All AI-generated code was reviewed, understood, and modified by me.
 
-Detailed documentation is available in:
-
-`docs/ai-usage-report.md`
+> Full details in [`docs/ai-usage-report.md`](docs/ai-usage-report.md)
 
 ---
 
-## 🎯 Learning Outcomes
+## Live Deployment
 
-Through building this project, I improved my understanding of:
-
-- Responsive design using Flexbox and Grid
-- JavaScript DOM manipulation
-- Theme toggling with class switching
-- UI/UX improvement techniques
-- Debugging and refining frontend code
+🔗 [GitHub Repository](https://github.com/CVQC/202267880-FaisalBayounis-assignment2.git)
 
 ---
 
+## Author
 
-## 👨‍💻 Author
-
-Faisal Bayounis  
-Aspiring Web Developer
+**Faisal Bayounis**   
+Student ID: 202267880

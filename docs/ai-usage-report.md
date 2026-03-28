@@ -1,68 +1,29 @@
 # AI Usage Report
 
-## 1. Tools Used & Use Cases
-
-### ChatGPT
-ChatGPT was used to generate the initial base structure of the project, including:
-
-- Basic HTML layout (sections: About, Projects, Contact)
-- Initial CSS styling structure
-- JavaScript features such as dark/light mode toggle, greeting message, and form interaction
-- Debugging support for theme toggle issues
-
-ChatGPT helped establish the foundational logic and structure of the portfolio.
+## Assignment 2 – Web Portfolio
 
 ---
 
-### Claude
-Claude was used after the base implementation to enhance the design and visual appearance of the website. It was mainly used for:
+### Tools Used
 
-- Improving UI styling and layout polish
-- Making the design more modern and visually appealing
-- Enhancing color choices and spacing
-- Refining project card design and presentation
+#### 1. ChatGPT
+- **Purpose:** Understanding concepts and building the basic structure
+- **How I used it:** I used ChatGPT at the beginning of the assignment to understand how to structure my HTML, what CSS variables are, and how JavaScript DOM manipulation works. It helped me understand the logic behind things like event listeners, localStorage, and the fetch API before I started writing code.
+- **What I learned:** It helped me understand the "why" behind the code, not just copy it.
 
-Claude helped elevate the aesthetic and user experience of the final website.
-
----
-
-## 2. Benefits & Challenges
-
-### Benefits
-- Accelerated development time
-- Provided structured code examples
-- Assisted in debugging and layout improvements
-- Helped transform a basic design into a more polished and professional interface
-
-### Challenges
-- Some generated code required modification to fit my project structure
-- Needed manual testing to ensure responsiveness and dark mode functionality
-- Required careful review to maintain understanding and originality
+#### 2. Claude 
+- **Purpose:** Code implementation, improvements, and debugging
+- **How I used it:** After understanding the concepts with ChatGPT, I used Claude to help me implement the actual features — such as the project filter buttons, the iTunes music search API, the expand/collapse skill cards, and the animations. It also helped me review my code and suggest improvements for accessibility and performance.
+- **What I improved:** I reviewed every suggestion and edited the code to fit my portfolio's design and structure. I did not paste code blindly — I made sure I understood each line before adding it.
 
 ---
 
-## 3. Learning Outcomes
+### How AI Supported My Learning
 
-Through using AI tools, I learned:
-
-- How to structure a responsive portfolio using Flexbox and CSS Grid
-- How to implement JavaScript DOM manipulation for interactivity
-- How theme toggling works with class switching
-- How design adjustments (spacing, color, layout) improve user experience
-- The importance of reviewing and understanding AI-generated suggestions
-
-This process strengthened both my frontend development skills and debugging abilities.
+- AI was used as a **learning assistant**, not a replacement for thinking
+- Every piece of AI-generated code was **reviewed, understood, and modified** by me
+- AI helped me **debug issues** faster and understand error messages
+- I used AI to **improve the quality** of my work, not just to complete it quickly
 
 ---
-
-## 4. Responsible Use & Modifications
-
-All AI-generated content was:
-
-- Reviewed and tested manually
-- Modified and customized for this specific assignment
-- Improved beyond the initial generated version
-- Understood before implementation
-
-I ensured that the final submission reflects my understanding, modifications, and personal design decisions.
 

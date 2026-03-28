@@ -578,3 +578,401 @@ body.dark .footer {
 
 .project-card:nth-child(1) { animation-delay: 0.2s; }
 .project-card:nth-child(2) { animation-delay: 0.4s; }
+
+
+
+
+.project-filters {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    border: 2px solid var(--primary);
+    background: white;
+    color: var(--primary);
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.project-card.hidden {
+    display: none;
+}
+
+.project-count {
+    text-align: center;
+    margin-top: 1rem;
+    color: var(--text-light);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+body.dark .filter-btn {
+    background: #1a1f2e;
+    color: #e1e8ed;
+    border-color: var(--primary);
+}
+
+
+
+
+
+.skill-extra {
+    display: none;
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-medium);
+    border-top: 1px solid var(--border-color);
+    padding-top: 0.75rem;
+}
+
+.skill-extra.open {
+    display: block;
+}
+
+.skill-toggle {
+    margin-top: 0.75rem;
+    background: none;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.skill-toggle:hover {
+    background: var(--primary);
+    color: white;
+}
+
+
+
+.section-music {
+    background: linear-gradient(135deg, rgba(155, 89, 182, 0.1), rgba(52, 152, 219, 0.1));
+    padding: var(--spacing-xl);
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+}
+
+.music-search-box {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-lg);
+}
+
+#music-input {
+    padding: var(--spacing-sm);
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 1rem;
+    width: 300px;
+    font-family: inherit;
+    transition: all var(--transition-fast);
+}
+
+#music-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+#music-search-btn {
+    background: linear-gradient(135deg, var(--purple), var(--primary));
+    color: white;
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+#music-search-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.music-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.music-card {
+    background: white;
+    border-radius: 15px;
+    padding: var(--spacing-sm);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
+    text-align: center;
+}
+
+.music-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.music-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+}
+
+.music-card h4 {
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    margin-bottom: 0.25rem;
+}
+
+.music-card p {
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+.music-error {
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+body.dark .music-card {
+    background: #1a1f2e;
+}
+
+body.dark .music-card h4 {
+    color: #e1e8ed;
+}
+
+body.dark #music-input {
+    background: #1a1f2e;
+    border-color: #2d3748;
+    color: #e1e8ed;
+}
+
+
+
+.play-btn {
+    margin-top: 0.5rem;
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+    color: white;
+    border: none;
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.play-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.no-preview {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    margin-top: 0.5rem;
+}
+
+
+
+
+/* ===== Animations & Transitions ===== */
+
+/* 1. Smooth section scroll already handled by html { scroll-behavior: smooth } */
+
+section {
+    scroll-margin-top: 80px;
+}
+
+/* 2. Hover effects on nav links - already have transform, adding glow */
+.nav-links a:hover {
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.25);
+}
+
+/* Hover on skill cards - lift + glow */
+.skill-card:hover {
+    box-shadow: 0 12px 30px rgba(52, 152, 219, 0.25);
+}
+
+/* Hover on project cards - lift + border glow */
+.project-card:hover {
+    box-shadow: 0 12px 30px rgba(52, 152, 219, 0.3);
+}
+
+/* Hover on filter buttons - pulse effect */
+.filter-btn:hover {
+    transform: scale(1.08);
+}
+
+/* Hover on submit button - glow */
+.btn-submit:hover {
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+}
+
+/* Hover on theme toggle */
+#theme-toggle:hover {
+    box-shadow: 0 8px 20px rgba(155, 89, 182, 0.4);
+}
+
+/* 3. Fade-in slide-in for sections */
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-40px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(40px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+    0%   { opacity: 0; transform: scale(0.8); }
+    70%  { transform: scale(1.05); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* Header slides in from top */
+.header {
+    animation: fadeInDown 0.7s ease-out;
+}
+
+/* Greeting banner fades in */
+#greeting-banner {
+    animation: fadeInDown 0.5s ease-out;
+}
+
+/* About section slides in from left */
+.section-about {
+    animation: slideInLeft 0.8s ease-out;
+}
+
+/* Skills section fades up - already have fadeInUp, enhancing */
+.skill-card:nth-child(odd) {
+    animation: slideInLeft 0.6s ease-out both;
+}
+.skill-card:nth-child(even) {
+    animation: slideInRight 0.6s ease-out both;
+}
+
+/* Project cards pop in */
+.project-card {
+    animation: popIn 0.6s ease-out both;
+}
+
+/* Music section slides in from right */
+.section-music {
+    animation: slideInRight 0.8s ease-out;
+}
+
+/* Filter buttons pop in */
+.filter-btn {
+    animation: popIn 0.4s ease-out both;
+}
+
+/* 4. Animated success/error form messages */
+@keyframes shakeX {
+    0%, 100% { transform: translateX(0); }
+    20%       { transform: translateX(-8px); }
+    40%       { transform: translateX(8px); }
+    60%       { transform: translateX(-5px); }
+    80%       { transform: translateX(5px); }
+}
+
+@keyframes bounceIn {
+    0%   { opacity: 0; transform: scale(0.5); }
+    60%  { transform: scale(1.1); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.form-message.success {
+    animation: bounceIn 0.5s ease-out;
+}
+
+.form-message.error {
+    animation: shakeX 0.5s ease-out;
+}
+
+/* Smooth image zoom on project cards */
+.project-image img {
+    transition: transform 0.5s ease;
+}
+
+/* Tag hover */
+.tag {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.tag:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+}
+
+/* Music card image zoom on hover */
+.music-card img {
+    transition: transform 0.3s ease;
+}
+.music-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Play button pulse when active */
+.play-btn:active {
+    transform: scale(0.95);
+}
+
+/* Skill toggle button bounce */
+.skill-toggle:active {
+    transform: scale(0.92);
+}
+
+/* Input fields smooth focus transition */
+.form-group input,
+.form-group textarea,
+#music-input {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+#music-input:focus {
+    transform: scale(1.01);
+}
+
+
+
+
+.no-projects-msg {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: var(--spacing-lg);
+    animation: fadeInUp 0.4s ease-out;
+}

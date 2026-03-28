@@ -211,7 +211,55 @@ document.addEventListener('DOMContentLoaded', function() {
         const loadTime = performance.now();
         console.log(`✨ Page loaded in ${loadTime.toFixed(2)}ms`);
     });
-    
+    // ===== Project Filter =====
+const filterButtons = document.querySelectorAll('.filter-btn');
+const allProjectCards = document.querySelectorAll('.project-card');
+const projectCount = document.getElementById('project-count');
+
+function updateCount(count) {
+    projectCount.textContent = count + ' project' + (count === 1 ? '' : 's') + ' shown';
+}
+
+function filterProjects(filter) {
+    let visible = 0;
+    allProjectCards.forEach(card => {
+        const match = filter === 'all' || card.dataset.category === filter;
+        card.classList.toggle('hidden', !match);
+        if (match) visible++;
+    });
+
+    const existing = document.getElementById('no-projects-msg');
+    if (existing) existing.remove();
+
+    if (visible === 0) {
+        const msg = document.createElement('p');
+        msg.id = 'no-projects-msg';
+        msg.className = 'no-projects-msg';
+        msg.textContent = ' No projects found in this category.';
+        document.querySelector('.projects-grid').after(msg);
+    }
+
+    updateCount(visible);
+}
+
+filterButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        filterProjects(this.dataset.filter);
+    });
+});
+
+filterProjects('all');
+
+// ===== Expand/Collapse Skills =====
+document.querySelectorAll('.skill-toggle').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const extra = this.previousElementSibling;
+        extra.classList.toggle('open');
+        this.textContent = extra.classList.contains('open') ? 'Show less ▲' : 'Show more ▼';
+    });
+});
 });
 
 // ===== Additional Utility Functions =====
@@ -239,3 +287,87 @@ function isInViewport(element) {
         rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
 }
+
+
+// ===== Music Search API =====
+const musicInput = document.getElementById('music-input');
+const musicSearchBtn = document.getElementById('music-search-btn');
+const musicResults = document.getElementById('music-results');
+const musicError = document.getElementById('music-error');
+
+function searchMusic() {
+    const query = musicInput.value.trim();
+    if (!query) {
+        musicError.textContent = '⚠️ Please enter an artist or song name.';
+        return;
+    }
+
+    musicError.textContent = '';
+    musicResults.innerHTML = '<p style="text-align:center;color:var(--text-light)">Searching...</p>';
+    musicSearchBtn.disabled = true;
+
+    fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&media=music&limit=8`)
+        .then(response => {
+            if (!response.ok) throw new Error('Failed');
+            return response.json();
+        })
+        .then(data => {
+            musicSearchBtn.disabled = false;
+            if (data.results.length === 0) {
+                musicResults.innerHTML = '';
+                musicError.textContent = '⚠️ No results found. Try a different search.';
+                return;
+            }
+            musicResults.innerHTML = data.results.map((track, index) => `
+    <div class="music-card">
+        <img src="${track.artworkUrl100}" alt="${track.trackName}">
+        <h4>${track.trackName}</h4>
+        <p>${track.artistName}</p>
+        ${track.previewUrl ? `
+            <audio id="audio-${index}" src="${track.previewUrl}"></audio>
+            <button class="play-btn" data-index="${index}">▶ Play Preview</button>
+        ` : '<p class="no-preview">No preview available</p>'}
+    </div>
+`).join('');
+
+document.querySelectorAll('.play-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const index = this.dataset.index;
+        const audio = document.getElementById('audio-' + index);
+
+        // Stop all other playing audios
+        document.querySelectorAll('.music-results audio').forEach(a => {
+            if (a.id !== 'audio-' + index) {
+                a.pause();
+                a.currentTime = 0;
+            }
+        });
+        document.querySelectorAll('.play-btn').forEach(b => b.textContent = '▶ Play Preview');
+
+        if (audio.paused) {
+            audio.play();
+            this.textContent = '⏸ Pause';
+        } else {
+            audio.pause();
+            this.textContent = '▶ Play Preview';
+        }
+
+        // Reset button when audio ends
+        audio.onended = () => {
+            this.textContent = '▶ Play Preview';
+        };
+    });
+});
+        })
+        .catch(() => {
+            musicSearchBtn.disabled = false;
+            musicResults.innerHTML = '';
+            musicError.textContent = '⚠️ Could not load results. Please check your connection.';
+        });
+}
+
+musicSearchBtn.addEventListener('click', searchMusic);
+
+musicInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') searchMusic();
+});
