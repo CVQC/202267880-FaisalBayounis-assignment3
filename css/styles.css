@@ -976,3 +976,309 @@ section {
     padding: var(--spacing-lg);
     animation: fadeInUp 0.4s ease-out;
 }
+
+
+/* ===== GitHub Section ===== */
+.section-github {
+    background: linear-gradient(135deg, rgba(36, 41, 46, 0.08), rgba(52, 152, 219, 0.08));
+    padding: var(--spacing-xl);
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+}
+
+.github-intro {
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: var(--spacing-lg);
+    font-size: 0.95rem;
+}
+
+.github-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.github-card {
+    background: white;
+    border-radius: 15px;
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    border: 2px solid var(--border-color);
+    transition: all var(--transition-normal);
+    text-decoration: none;
+    display: block;
+}
+
+.github-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+.github-card h4 {
+    color: var(--primary);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.github-card p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.5;
+}
+
+.github-meta {
+    display: flex;
+    gap: var(--spacing-sm);
+    font-size: 0.85rem;
+    color: var(--text-light);
+    flex-wrap: wrap;
+}
+
+.github-meta span {
+    background: var(--bg-surface);
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.github-error {
+    text-align: center;
+    color: var(--accent);
+    font-weight: 600;
+    margin-top: var(--spacing-sm);
+}
+
+body.dark .github-card {
+    background: #1a1f2e;
+    border-color: #2d3748;
+}
+
+body.dark .github-card h4 {
+    color: #63b3ed;
+}
+
+body.dark .github-card p {
+    color: #a0aec0;
+}
+
+body.dark .github-meta span {
+    background: #2d3748;
+    border-color: #4a5568;
+    color: #a0aec0;
+}
+
+/* ===== Quote Section ===== */
+.section-quote {
+    background: linear-gradient(135deg, rgba(46, 204, 113, 0.08), rgba(155, 89, 182, 0.08));
+    padding: var(--spacing-xl);
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+}
+
+.quote-box {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+#quote-text {
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    line-height: 1.8;
+    font-style: italic;
+    margin-bottom: var(--spacing-sm);
+    min-height: 80px;
+}
+
+#quote-author {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: var(--spacing-md);
+}
+
+#new-quote-btn {
+    background: linear-gradient(135deg, var(--secondary), var(--purple));
+    color: white;
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    box-shadow: var(--shadow-sm);
+}
+
+#new-quote-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.quote-error {
+    color: var(--accent);
+    font-weight: 600;
+    margin-top: var(--spacing-sm);
+}
+
+body.dark #quote-text {
+    color: #e1e8ed;
+}
+
+
+/* ===== Project Controls ===== */
+.project-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-lg);
+}
+
+.project-sort {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.project-sort label {
+    font-weight: 600;
+    color: var(--text-medium);
+    font-size: 0.95rem;
+}
+
+#sort-select {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--primary);
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary);
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#sort-select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+body.dark #sort-select {
+    background: #1a1f2e;
+    color: #e1e8ed;
+    border-color: var(--primary);
+}
+
+body.dark .project-sort label {
+    color: #a0aec0;
+}
+
+/* ===== Visit Timer ===== */
+.visit-timer {
+    margin-top: var(--spacing-sm);
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+#visit-time {
+    font-weight: 700;
+    color: var(--primary);
+}
+
+
+/* ===== Visitor Name State ===== */
+.name-prompt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.name-prompt.hidden {
+    display: none;
+}
+
+#visitor-name-input {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--primary);
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    width: 200px;
+    transition: all 0.3s ease;
+}
+
+#visitor-name-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
+}
+
+#save-name-btn {
+    background: linear-gradient(135deg, var(--primary), var(--purple));
+    color: white;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#save-name-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+#skip-name-btn {
+    background: none;
+    border: 2px solid var(--border-color);
+    color: var(--text-light);
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#skip-name-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.returning-msg {
+    margin-top: var(--spacing-sm);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.returning-msg.hidden {
+    display: none;
+}
+
+.reset-name-btn {
+    margin-top: var(--spacing-sm);
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 0.8rem;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.reset-name-btn:hover {
+    color: var(--primary);
+}
+
+.reset-name-btn.hidden {
+    display: none;
+}

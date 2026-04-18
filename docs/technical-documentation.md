@@ -1,23 +1,23 @@
 # Technical Documentation
-## Faisal Bayounis – Web Developer Portfolio
+## Faisal Bayounis – Web Developer Portfolio (Assignment 3)
 
 ---
 
 ## 1. Project Overview
 
-This is a personal portfolio website built entirely with HTML5, CSS3, and vanilla JavaScript (no frameworks or libraries). The website showcases my skills, projects, and contact information, while demonstrating dynamic and interactive web development features.
+This is an advanced personal portfolio website built entirely with HTML5, CSS3, and vanilla JavaScript. Assignment 3 extends the previous version with external API integrations, complex application logic, state management, and performance optimizations.
 
 ---
 
 ## 2. File Structure
-├── index.html → Main HTML structure of the website
-├── README.md → Project overview and setup instructions
+├── index.html → Main HTML structure
+├── README.md → Project overview and setup
 ├── css/
 │ └── styles.css → All styling, dark mode, animations, responsive design
 ├── js/
 │ └── script.js → All JavaScript logic and interactivity
 ├── assets/
-│ └── images/ → Project images and icons
+│ └── images/ → Project images
 └── docs/
 ├── ai-usage-report.md → AI tools usage documentation
 └── technical-documentation.md → This file
@@ -29,157 +29,206 @@ This is a personal portfolio website built entirely with HTML5, CSS3, and vanill
 
 ## 3. HTML Structure (`index.html`)
 
-The HTML file is divided into the following sections:
-
 | Section | ID / Class | Description |
 |---|---|---|
-| Greeting Banner | `#greeting-banner` | Displays a dynamic time-based greeting at the top |
-| Header | `.header` | Contains the name, tagline, navigation links, and dark mode toggle |
-| About | `#about` | A short personal introduction paragraph |
-| Skills | `#skills` | Four skill cards with expand/collapse functionality |
-| Projects | `#projects` | Project cards with filter buttons (All / COE / CS) |
-| Music | `#music` | iTunes music search with 30-second audio preview |
-| Contact | `#contact` | A validated contact form with success/error feedback |
-| Footer | `.footer` | Copyright information |
+| Greeting Banner | `#greeting-banner` | Time-based greeting + visitor name input/display |
+| Header | `.header` | Name, tagline, navigation, dark mode toggle |
+| About | `#about` | Personal introduction |
+| Skills | `#skills` | Four expandable skill cards |
+| Projects | `#projects` | Filterable + sortable project cards |
+| Contact | `#contact` | Validated contact form |
+| GitHub | `#github` | Live GitHub repositories from API |
+| Quote | `#quote` | Random inspirational quote from API |
+| Music | `#music` | iTunes music search with audio preview |
+| Footer | `.footer` | Copyright + live visit timer |
+
+### Performance Tags in `<head>`
+```html
+<link rel="preconnect" href="https://api.github.com">
+<link rel="dns-prefetch" href="https://dummyjson.com">
+<script src="js/script.js" defer></script>
+```
+- `preconnect` — starts the connection to APIs before they are needed
+- `dns-prefetch` — resolves DNS early to reduce latency
+- `defer` — script loads after HTML is parsed, improving page speed
+- `loading="lazy"` — images only load when they scroll into view
 
 ---
 
 ## 4. CSS Details (`styles.css`)
 
 ### 4.1 CSS Variables
-All colors, spacing, shadows, and transitions are defined as CSS variables inside `:root` for easy maintainability:
+All colors, spacing, shadows, and transitions are defined in `:root`:
 ```css
---primary: #3498db      → Main blue color
---secondary: #2ecc71    → Green color
---purple: #9b59b6       → Purple accent
---accent: #e74c3c       → Red for errors
---orange: #f39c12       → Orange accent
+--primary: #3498db       → Main blue
+--secondary: #2ecc71     → Green
+--purple: #9b59b6        → Purple accent
+--accent: #e74c3c        → Red for errors
+--orange: #f39c12        → Orange accent
 ```
 
 ### 4.2 Layout
-- **Flexbox** is used for the header and navigation layout
-- **CSS Grid** is used for the skills grid and projects grid with `auto-fit` and `minmax()` for automatic responsiveness
+- **Flexbox** — header, navigation, search boxes, filter buttons
+- **CSS Grid** — skills grid, projects grid, music results grid, GitHub grid
 
 ### 4.3 Dark Mode
-- Triggered by adding the `.dark` class to `<body>`
-- All dark mode styles are scoped under `body.dark` selectors
-- Preference is saved in `localStorage` and restored on page load
+- Triggered by toggling `.dark` class on `<body>`
+- All dark styles scoped under `body.dark` selectors
+- Preference saved in `localStorage` and restored on every page load
 
 ### 4.4 Responsive Design
-- **768px breakpoint** → stacks header vertically, single column grids
-- **480px breakpoint** → reduces padding, stacks nav links vertically
+- **768px** — stacks header vertically, single column grids
+- **480px** — reduces padding, wraps nav links
 
 ### 4.5 Animations
+
 | Animation | Used On | Effect |
 |---|---|---|
-| `fadeInUp` | Cards, sections | Slides up from below while fading in |
-| `slideInLeft` | About section, odd skill cards | Slides in from the left |
-| `slideInRight` | Music section, even skill cards | Slides in from the right |
-| `fadeInDown` | Header, greeting banner | Drops in from above |
-| `popIn` | Project cards, filter buttons | Scales up with a slight bounce |
+| `fadeInUp` | Cards, sections | Slides up while fading in |
+| `slideInLeft` | About, odd skill cards | Slides from left |
+| `slideInRight` | Music section, even skill cards | Slides from right |
+| `fadeInDown` | Header, greeting banner | Drops from above |
+| `popIn` | Project cards, filter buttons | Scales up with bounce |
 | `bounceIn` | Success form message | Bounces into view |
-| `shakeX` | Error form message | Shakes horizontally to signal an error |
+| `shakeX` | Error form message | Shakes horizontally |
 
 ---
 
 ## 5. JavaScript Details (`script.js`)
 
-All JavaScript runs inside `DOMContentLoaded` to ensure the HTML is fully loaded before any logic executes.
+All code runs inside `DOMContentLoaded` except utility functions.
 
 ### 5.1 Dark Mode Toggle
 ```js
-themeToggle.addEventListener('click', function() {
-    document.body.classList.toggle('dark');
-    localStorage.setItem('theme', 'dark' or 'light');
-});
+document.body.classList.toggle('dark');
+localStorage.setItem('theme', 'dark');
 ```
-- Toggles the `.dark` class on `<body>`
-- Saves the user's choice in `localStorage`
-- Restores the saved preference when the page loads
+- Toggles `.dark` on `<body>`, saves to `localStorage`, restores on load
 
 ### 5.2 Dynamic Greeting
 ```js
 const hour = new Date().getHours();
 ```
-- Reads the current hour from the user's system clock
-- Displays "Good Morning", "Good Afternoon", or "Good Evening" with a matching emoji
-- Updates automatically every time the page loads
+- Reads system clock and shows Good Morning / Afternoon / Evening
 
-### 5.3 Active Navigation Highlight
+### 5.3 Visitor Name State Management
 ```js
-window.addEventListener('scroll', highlightActiveSection);
+localStorage.getItem('visitorName');
+localStorage.setItem('visitorName', name);
+localStorage.removeItem('visitorName');
 ```
-- Listens to the scroll position
-- Compares it to the `offsetTop` of each section
-- Adds the `.active` class to the matching nav link
+- First visit → shows name input prompt
+- Returning visit → shows "Welcome back, [name]!"
+- Change Name button → clears localStorage and shows input again
+- Skip button → hides prompt without saving
 
-### 5.4 Project Filter
+### 5.4 Active Navigation Highlight
 ```js
-allProjectCards.forEach(card => {
-    const match = filter === 'all' || card.dataset.category === filter;
-    card.classList.toggle('hidden', !match);
-});
+window.addEventListener('scroll', debounce(highlightActiveSection, 100));
 ```
-- Each project card has a `data-category` attribute (`coe` or `cs`)
-- Clicking a filter button shows only matching cards
-- Non-matching cards get the `.hidden` class (`display: none`)
-- Shows a "No projects found" message if zero results
+- Uses `debounce` to limit scroll event firing for performance
+- Compares scroll position to section offsets and adds `.active` to matching nav link
 
-### 5.5 Expand / Collapse Skills
+### 5.5 Project Filter + Sort
+```js
+cards.sort((a, b) => nameA.localeCompare(nameB));
+card.classList.toggle('hidden', !match);
+```
+- Filter uses `data-category` attributes on project cards
+- Sort reorders DOM elements using `.appendChild()`
+- Both filter and sort run together in `applyFilterAndSort()`
+- Shows "No projects found" message when zero cards visible
+
+### 5.6 Expand / Collapse Skills
 ```js
 extra.classList.toggle('open');
 ```
-- Each skill card has a hidden `.skill-extra` div
-- Clicking "Show more" toggles the `.open` class which sets `display: block`
-- Button text changes between "Show more ▼" and "Show less ▲"
+- Toggles `.open` class on `.skill-extra` div
+- Button text switches between "Show more ▼" and "Show less ▲"
 
-### 5.6 Form Validation
-Validates three things before submission:
-1. **Empty fields** → shows error if name, email, or message is missing
-2. **Email format** → checks using regex `/^[^\s@]+@[^\s@]+\.[^\s@]+$/`
-3. **Message length** → must be at least 10 characters
+### 5.7 Form Validation
+Three validation steps before submission:
+1. Empty field check — name, email, message all required
+2. Email format — tested with regex `/^[^\s@]+@[^\s@]+\.[^\s@]+$/`
+3. Message length — minimum 10 characters
+- Success: green animated confirmation message
+- Error: red animated shake message
 
-On success, shows a green confirmation message with the user's name.
+### 5.8 GitHub API
+```js
+fetch('https://api.github.com/users/CVQC/repos?sort=updated&per_page=6')
+```
+- Fetches 6 most recently updated public repositories
+- Displays name, description, stars, forks, and language
+- Each card links directly to the GitHub repository
+- Shows friendly error if API fails
 
-### 5.7 Music Search API
+### 5.9 Quotes API
+```js
+fetch('https://dummyjson.com/quotes/random')
+```
+- Fetches a random quote from DummyJSON (1400+ quotes)
+- Displays quote text and author
+- "✨ New Quote" button fetches a fresh one
+- Shows error message if API fails
+
+### 5.10 iTunes Music Search API
 ```js
 fetch(`https://itunes.apple.com/search?term=${query}&media=music&limit=8`)
 ```
-- Uses the **iTunes Search API** (free, no API key required)
-- Fetches up to 8 tracks matching the search query
-- Displays album art, track name, and artist name for each result
-- If a `previewUrl` exists, a **▶ Play Preview** button is shown
-- Only one song can play at a time — others pause automatically
-- Shows friendly error messages if the API fails or returns no results
+- Searches iTunes for up to 8 matching tracks
+- Displays album art, track name, and artist name
+- If `previewUrl` exists, shows ▶ Play Preview button
+- Only one song plays at a time — others pause automatically
+- Shows friendly error if API fails or returns no results
 
-### 5.8 Scroll Animations (IntersectionObserver)
+### 5.11 Visit Timer
+```js
+setInterval(() => { seconds++; }, 1000);
+```
+- Counts up every second from page load
+- Displays in footer as `Xs` or `Xm Xs` format
+
+### 5.12 Scroll Animation (IntersectionObserver)
 ```js
 const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
+    if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+    }
 });
 ```
 - Watches skill cards and project cards
-- Triggers a fade-in + slide-up animation when they enter the viewport
+- Triggers fade-in + slide-up when they enter the viewport
 - More performant than scroll event listeners
 
 ---
 
 ## 6. APIs Used
 
-| API | URL | Purpose | Auth Required |
+| API | Endpoint | Purpose | Auth |
 |---|---|---|---|
-| iTunes Search API | `https://itunes.apple.com/search` | Fetch music tracks with artwork and preview | ❌ No |
+| GitHub REST API | `api.github.com/users/CVQC/repos` | Live repositories | ❌ No |
+| DummyJSON | `dummyjson.com/quotes/random` | Random quotes | ❌ No |
+| iTunes Search | `itunes.apple.com/search` | Music + previews | ❌ No |
 
 ---
 
-## 7. Browser Compatibility
+## 7. Performance Optimizations
 
-The website uses only standard Web APIs and CSS features supported by all modern browsers:
+| Technique | Implementation |
+|---|---|
+| Lazy image loading | `loading="lazy"` on all `<img>` tags |
+| Deferred script | `<script defer>` on JS file |
+| Preconnect to APIs | `<link rel="preconnect">` in `<head>` |
+| DNS prefetch | `<link rel="dns-prefetch">` in `<head>` |
+| Debounced scroll | `debounce(highlightActiveSection, 100)` |
+| IntersectionObserver | Instead of scroll event for animations |
+| No external libraries | Pure HTML/CSS/JS — no jQuery or frameworks |
+
+---
+
+## 8. Browser Compatibility
 
 - ✅ Google Chrome
 - ✅ Mozilla Firefox
@@ -189,19 +238,11 @@ The website uses only standard Web APIs and CSS features supported by all modern
 
 ---
 
-## 8. Performance Considerations
-
-- No external libraries or frameworks — faster load time
-- API calls only happen when the user clicks Search — no unnecessary requests
-- `IntersectionObserver` is used instead of scroll events for better performance
-- CSS animations use `transform` and `opacity` — GPU-accelerated properties
-- `localStorage` is used instead of cookies for lightweight preference storage
-
----
-
 ## 9. Known Limitations
 
-- The contact form does not actually send emails — it simulates submission (no backend)
-- iTunes API previews are limited to 30 seconds per track
+- Contact form does not send real emails — simulated only (no backend)
+- iTunes previews limited to 30 seconds per track
 - Some tracks may not have a preview URL available
-- The website requires an internet connection for the music search feature
+- GitHub API only shows public repositories
+- Music search and GitHub repos require an internet connection
+- GitHub API has a rate limit of 60 requests/hour for unauthenticated requests
