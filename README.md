@@ -117,5 +117,5 @@ All AI-generated code was reviewed, understood, and modified before use.
 ## Author
 
 **Faisal Bayounis**
-Jubail University College
+KFUPM
 Student ID: 202267880
